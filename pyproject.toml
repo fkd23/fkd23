@@ -1,0 +1,30 @@
+[project]
+name = "web-answers"
+version = "0.1.0"
+description = "Web-grounded answers with the Perplexity Agent API"
+requires-python = ">=3.10"
+dependencies = ["perplexityai>=0.43.6"]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff"]
+
+[project.scripts]
+web-answers = "web_answers.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
